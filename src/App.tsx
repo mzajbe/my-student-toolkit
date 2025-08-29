@@ -1,13 +1,12 @@
 import "./App.css";
-import { Button } from "./components/ui/button";
+import Navbar from "./components/navbar/Navbar";
+import Sidebar from "./components/sidebar/Sidebar";
 
 function App() {
   return (
     <>
-      <h1 className="text-red-500">hello</h1>
-      <div>
-        <Button>Click me</Button>
-      </div>
+    <Navbar></Navbar>
+      <Sidebar></Sidebar>
     </>
   );
 }
