@@ -1,6 +1,8 @@
 import RootLayout from "@/layouts/RootLayout";
 import Dashboard from "@/pages/dashboard/Dashboard";
 import Home from "@/pages/home/Home";
+import Schedule from "@/pages/schedule/Schedule";
+
 import { createBrowserRouter } from "react-router";
 
 
@@ -19,6 +21,11 @@ export const router = createBrowserRouter([
       {
         path: 'dashboard',
         Component: Dashboard,
+        // loader: () => fetch('./serviceCenter.json')
+      },
+      {
+        path: 'schedule',
+        Component:Schedule,
         // loader: () => fetch('./serviceCenter.json')
       },
       
