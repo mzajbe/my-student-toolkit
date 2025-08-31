@@ -8,9 +8,7 @@ import { Plus, Pencil, Trash2 } from "lucide-react";
 // Import Big Calendar CSS
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import type { ClassEvent } from "@/types/types";
-
-
-
+import { Button } from "../ui/button";
 
 // Create a localizer
 const localizer = momentLocalizer(moment);
@@ -147,7 +145,24 @@ const Calender: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto p-6">
+    <div className="container mx-auto p-6" >
+      <style>
+        {`
+          .dark .rbc-off-range-bg {
+            background-color: #57564F !important;
+          }
+          .dark .rbc-off-range {
+            color: #9CA3AF !important;
+          }
+          .dark .rbc-header {
+            background-color: #1F2937 !important;
+            color: white;
+          }
+          .dark .rbc-today {
+            background-color: #1C6EA4 !important;
+          }
+        `}
+      </style>
       <div className="mb-6">
         <h1 className="text-2xl font-bold mb-4">Class Schedule Calendar</h1>
 
@@ -161,13 +176,14 @@ const Calender: React.FC = () => {
           onSelectSlot={handleSelectSlot}
           selectable
           eventPropGetter={eventStyleGetter}
+          // className="dark:bg-black"
         />
       </div>
 
       {/* Event Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white p-6 rounded-lg w-96">
+          <div className="bg-white dark:bg-black p-6 border border-gray-500 rounded-lg w-96">
             <h2 className="text-xl font-bold mb-4">
               {selectedEvent ? "Edit Event" : "Add New Event"}
             </h2>
@@ -200,7 +216,7 @@ const Calender: React.FC = () => {
                     subject: e.target.value,
                   })
                 }
-                className="w-full p-2 border rounded"
+                className="w-full p-2 border rounded dark:bg-black"
               >
                 <option value="">Select Subject</option>
                 {SUBJECTS.map((subject) => (
@@ -230,7 +246,7 @@ const Calender: React.FC = () => {
 
             {/* Start and End Time */}
             <div className="flex space-x-4 mb-4">
-              <div className="w-1/2">
+              <div className="w-1/2 ">
                 <label className="block mb-2">Start Time</label>
                 <input
                   type="datetime-local"
@@ -241,7 +257,7 @@ const Calender: React.FC = () => {
                       start: new Date(e.target.value),
                     })
                   }
-                  className="w-full p-2 border rounded"
+                  className="w-full p-2 border rounded "
                 />
               </div>
               <div className="w-1/2">
@@ -271,18 +287,20 @@ const Calender: React.FC = () => {
                 </button>
               )}
               <div className="flex space-x-4">
-                <button
+                <Button
+                  variant="destructive"
                   onClick={() => setIsModalOpen(false)}
-                  className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
+                  className="px-4 py-2 rounded"
                 >
                   Cancel
-                </button>
-                <button
+                </Button>
+                <Button
+                  // variant="outline"
                   onClick={handleSaveEvent}
-                  className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                  className="px-4 py-2 rounded "
                 >
                   Save
-                </button>
+                </Button>
               </div>
             </div>
           </div>
