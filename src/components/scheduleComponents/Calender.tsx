@@ -159,7 +159,7 @@ const Calender: React.FC = () => {
             color: white;
           }
           .dark .rbc-today {
-            background-color: #1C6EA4 !important;
+            background-color: #DDDAD0 !important;
           }
         `}
       </style>

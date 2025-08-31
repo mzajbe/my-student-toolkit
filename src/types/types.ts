@@ -12,3 +12,40 @@ export interface ClassEvent {
   borderColor?: string;
   [key: string]: any;
 }
+
+
+//-------------------------------------------------
+//-------------------------------------------------
+//-------------------------------------------------
+//-------------------------------------------------
+//-------------------------------------------------
+
+
+//scheduleComponent types
+export type DayOfWeek = "monday" | "tuesday" | "wednesday" | "thursday" | "friday";
+
+interface ClassInfo {
+  subject: string;
+  time: string;
+  teacher: string;
+  room: string;
+}
+
+export interface RoutineData {
+  monday: ClassInfo[];
+  tuesday: ClassInfo[];
+  wednesday: ClassInfo[];
+  thursday: ClassInfo[];
+  friday: ClassInfo[];
+}
+
+export interface DayColors {
+  bg: string;
+  text: string;
+  border: string;
+}
+//-------------------------------------------------
+//-------------------------------------------------
+//-------------------------------------------------
+//-------------------------------------------------
+//-------------------------------------------------
