@@ -25,17 +25,17 @@ const items = [
     icon: Inbox,
   },
   {
-    title: "Calendar",
+    title: "Study Planner",
     url: "#",
     icon: Calendar,
   },
   {
-    title: "Search",
+    title: "Budget tracker",
     url: "#",
     icon: Search,
   },
   {
-    title: "Settings",
+    title: "Exam Q&A generator",
     url: "#",
     icon: Settings,
   },

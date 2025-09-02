@@ -10,7 +10,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { CalendarDays, Clock, Plus, Edit, Trash2 } from "lucide-react";
-import type { DayOfWeek, ClassInfo } from "@/types/types";
+import type { DayOfWeek } from "@/types/types";
 import { dayColors } from "./dayColors";
 import { routineData } from "./routineData";
 
@@ -99,7 +99,7 @@ const Routine = () => {
 
   return (
     <>
-      <Card className="w-full max-w-5xl mx-auto mt-6 shadow-xl rounded-2xl">
+      <Card className="w-full max-w-5xl border  mx-auto mt-6 shadow-xl rounded-2xl">
         <CardContent className="p-6">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-2xl font-bold flex items-center gap-2">
