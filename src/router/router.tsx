@@ -2,6 +2,7 @@ import RootLayout from "@/layouts/RootLayout";
 import Dashboard from "@/pages/dashboard/Dashboard";
 import Home from "@/pages/home/Home";
 import Schedule from "@/pages/schedule/Schedule";
+import StudyPlanner from "@/pages/studyPlanner/StudyPlanner";
 
 import { createBrowserRouter } from "react-router";
 
@@ -26,7 +27,10 @@ export const router = createBrowserRouter([
       {
         path: 'schedule',
         Component:Schedule,
-        // loader: () => fetch('./serviceCenter.json')
+      },
+      {
+        path: 'study-planner',
+        Component:StudyPlanner,
       },
       
     ]

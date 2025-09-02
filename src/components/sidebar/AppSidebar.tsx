@@ -26,7 +26,7 @@ const items = [
   },
   {
     title: "Study Planner",
-    url: "#",
+    url: "study-planner",
     icon: Calendar,
   },
   {
