@@ -39,58 +39,14 @@ import {
 } from "@/components/ui/dialog";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Separator } from "@/components/ui/separator";
+import type { DaysOfWeek, NewTask, Task } from "@/types/types";
 
 
-type Priority = "low" | "medium" | "high";
-
-type DayOfWeek =
-  | "Monday"
-  | "Tuesday"
-  | "Wednesday"
-  | "Thursday"
-  | "Friday"
-  | "Saturday"
-  | "Sunday";
 
 
-// A full task (existing or saved)
-  interface Task {
-    id: number;
-    subject: string;
-    topic : string;
-    priority:Priority;
-    deadline: string;
-    timeSlot: string;
-    duration: number;
-    completed: boolean;
-    dayOfWeek: DayOfWeek;
-  }
-
-  // For creating a new task (no id / completed yet)
-interface NewTask {
-  subject: string;
-  topic: string;
-  priority: Priority;
-  deadline: string;
-  timeSlot: string;
-  duration: number;
-  dayOfWeek: DayOfWeek;
-}
 
 // Optional state for editing (can be null)
 type EditingTask = Task | null;
-
-
-
-
-
-
-
-
-
-
-
-
 
 const StudyPlanner = () => {
   const [tasks, setTasks] = useState<Task[]>([
@@ -137,12 +93,6 @@ const StudyPlanner = () => {
     low: "secondary",
   } as const;
 
-//   const priorityLabels = {
-//     high: "High Priority",
-//     medium: "Medium Priority",
-//     low: "Low Priority",
-//   };
-
   const daysOfWeek = [
     "Monday",
     "Tuesday",
@@ -173,48 +123,53 @@ const StudyPlanner = () => {
     }
   };
 
-  const deleteTask = (id:number) => {
+  const deleteTask = (id: number) => {
     setTasks(tasks.filter((task) => task.id !== id));
   };
 
-  const toggleComplete = (id:number) => {
+  const toggleComplete = (id: number) => {
     setTasks(
       tasks.map((task) =>
         task.id === id ? { ...task, completed: !task.completed } : task
       )
     );
   };
-// Start editing a task
+  // Start editing a task
   const startEdit = (task: Task) => {
     setEditingTask({ ...task });
     setIsEditDialogOpen(true);
   };
-// Save changes after editing
+  // Save changes after editing
   const saveEdit = () => {
     if (!editingTask) return; //guard because editingTask can be null
     setTasks(
-      tasks.map((task:Task) => (task.id === editingTask.id ? editingTask : task))
+      tasks.map((task: Task) =>
+        task.id === editingTask.id ? editingTask : task
+      )
     );
     setIsEditDialogOpen(false);
     setEditingTask(null);
   };
 
-  const getTasksForDay = (day:DayOfWeek) => {
+  const getTasksForDay = (day: DaysOfWeek) => {
     return tasks
       .filter((task) => task.dayOfWeek === day)
       .sort((a, b) => a.timeSlot.localeCompare(b.timeSlot));
   };
 
-
-
   const getUpcomingTasks = () => {
     return tasks
       .filter(
         (task: Task) => !task.completed && new Date(task.deadline) >= new Date()
-      ).sort((a, b) => new Date(a.deadline).getTime() - new Date(b.deadline).getTime()).slice(0, 3);
+      )
+      .sort(
+        (a, b) =>
+          new Date(a.deadline).getTime() - new Date(b.deadline).getTime()
+      )
+      .slice(0, 3);
   };
-// Format duration in hours/minutes
-  const formatDuration = (minutes:number) => {
+  // Format duration in hours/minutes
+  const formatDuration = (minutes: number) => {
     const hours = Math.floor(minutes / 60);
     const mins = minutes % 60;
     if (hours > 0) {
@@ -378,7 +333,10 @@ const StudyPlanner = () => {
                     <Select
                       value={newTask.dayOfWeek}
                       onValueChange={(value) =>
-                        setNewTask({ ...newTask, dayOfWeek: value as DayOfWeek })
+                        setNewTask({
+                          ...newTask,
+                          dayOfWeek: value as DayOfWeek,
+                        })
                       }
                     >
                       <SelectTrigger>
@@ -652,7 +610,10 @@ const StudyPlanner = () => {
                   <Select
                     value={editingTask.priority}
                     onValueChange={(value) =>
-                      setEditingTask({ ...editingTask, priority: value as Priority })
+                      setEditingTask({
+                        ...editingTask,
+                        priority: value as Priority,
+                      })
                     }
                   >
                     <SelectTrigger>
@@ -670,7 +631,10 @@ const StudyPlanner = () => {
                   <Select
                     value={editingTask.dayOfWeek}
                     onValueChange={(value) =>
-                      setEditingTask({ ...editingTask, dayOfWeek: value as DayOfWeek })
+                      setEditingTask({
+                        ...editingTask,
+                        dayOfWeek: value as DayOfWeek,
+                      })
                     }
                   >
                     <SelectTrigger>

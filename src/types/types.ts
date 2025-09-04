@@ -49,3 +49,47 @@ export interface DayColors {
 //-------------------------------------------------
 //-------------------------------------------------
 //-------------------------------------------------
+
+
+
+
+
+export type Priority = "low" | "medium" | "high";
+
+
+// A full task (existing or saved)
+export interface Task {
+  id: number;
+  subject: string;
+  topic: string;
+  priority: Priority;
+  deadline: string;
+  timeSlot: string;
+  duration: number;
+  completed: boolean;
+  dayOfWeek: DaysOfWeek;
+}
+
+
+
+export type DaysOfWeek =
+  | "Monday"
+  | "Tuesday"
+  | "Wednesday"
+  | "Thursday"
+  | "Friday"
+  | "Saturday"
+  | "Sunday";
+
+
+
+// For creating a new task (no id / completed yet)
+ export interface NewTask {
+  subject: string;
+  topic: string;
+  priority: Priority;
+  deadline: string;
+  timeSlot: string;
+  duration: number;
+  dayOfWeek: DayOfWeek;
+}
