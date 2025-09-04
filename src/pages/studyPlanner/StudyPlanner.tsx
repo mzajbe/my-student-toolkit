@@ -39,7 +39,7 @@ import {
 } from "@/components/ui/dialog";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Separator } from "@/components/ui/separator";
-import type { DaysOfWeek, NewTask, Task } from "@/types/types";
+import type { DaysOfWeek, NewTask, Priority, Task } from "@/types/types";
 
 
 
@@ -335,7 +335,7 @@ const StudyPlanner = () => {
                       onValueChange={(value) =>
                         setNewTask({
                           ...newTask,
-                          dayOfWeek: value as DayOfWeek,
+                          dayOfWeek: value as DaysOfWeek,
                         })
                       }
                     >
@@ -633,7 +633,7 @@ const StudyPlanner = () => {
                     onValueChange={(value) =>
                       setEditingTask({
                         ...editingTask,
-                        dayOfWeek: value as DayOfWeek,
+                        dayOfWeek: value as DaysOfWeek,
                       })
                     }
                   >

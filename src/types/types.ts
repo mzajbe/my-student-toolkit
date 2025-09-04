@@ -91,5 +91,5 @@ export type DaysOfWeek =
   deadline: string;
   timeSlot: string;
   duration: number;
-  dayOfWeek: DayOfWeek;
+  dayOfWeek: DaysOfWeek;
 }
